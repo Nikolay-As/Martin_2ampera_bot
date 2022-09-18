@@ -12,7 +12,7 @@ const pool = mysql.createPool({
   //host: 'nikolayhs.beget.tech',
   //user: 'nikolayhs_bot',
   //database: 'nikolayhs_bot',
-  //password:'Nikolayhs_bot',
+  //password:'Nikolayhs_bot', Привет
   host: "localhost",  
   user: "root",
   database: "nikolayhs_bot",
