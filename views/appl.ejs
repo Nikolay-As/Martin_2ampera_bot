@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>II Ampera Adm</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style type="text/css">
+      #title{
+        border-radius: 50% ;
+        text-align: center; 
+        background-color: rgba(214, 214, 214, 0.986); 
+        margin-left: 20%;
+        margin-right:20%; 
+        margin-top: 1%;
+      }
+      form {
+        margin-top: 1%; 
+        display: inline-block;
+        margin-left: 1%;
+      }
+      #appl_length{
+        margin-left: 2%;
+      }
+      #button{
+        margin-left: 1%;
+      }
+     </style>
+
+    
+
+</head>
+<body>
+
+  <div id="title">
+    <h1>Необработанные заявки на оплату</h1>
+   </div>
+
+ 
+   <div id='button'>
+
+<form method="GET" action="mac_appl">
+  <input type="submit" value="Заявки на МАКИ"></input>
+</form>
+
+
+<form method="GET" action="users">
+  <input type="submit" value="Пользователи"></input>
+</form>
+
+ </div> 
+  
+
+<h2 id="appl_length">Всего заявок:<%=result.length%></h2>
+
+
+<div style="margin-left: 1%; margin-right: 1%;">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Комната</th>
+        <th scope="col">Показать чек</th>
+        <th scope="col">Статус</th>
+        <th scope="col">Обработана</th>
+        <th scope="col">Напиши админу, ошибка в заявке</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      
+
+      <% for(var i=0; i<result.length;i++) {%>
+        <tr>
+          <td><%=result[i].id %></td>
+          <td><%=result[i].fio_user%></td>
+          <td><%=result[i].room_number%></td>
+          <td>
+            <form action="check_views<%=result[i].id %>" method="GET" style="display:inline;"> 
+              <input type="submit" value="Показать чек"></input>
+          </form>
+          </td>
+          <td><%=result[i].status %></td>
+          <td>
+
+            <form action="processed<%=result[i].id %>" method="GET" style="display:inline;"> 
+              <input type="submit" value="Обработана"></button>
+          </form>
+        </td>
+          <td>
+            <form action="error<%=result[i].id %>" method="GET" style="display:inline;"> 
+              <input type="submit" value="ошибка"></button>
+          </form>
+          </td>
+        </tr>
+    <%} %>
+
+    </tbody>
+  </table>
+</div>
+  
+  
+     
+   
+</body>
+<html>
